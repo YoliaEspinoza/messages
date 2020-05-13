@@ -49,15 +49,12 @@ function setup() {
   database = firebase.database();
 
   // this points to the folder you want your data to appear in
-  let ref = database.ref(message);
+  let ref = database.ref("message");
 
   // initialize Firebase connection
   // callback functions are gotData() and errData()
   ref.on('value', gotData, errData);
 }
-
-
-
 
 function draw() {
 

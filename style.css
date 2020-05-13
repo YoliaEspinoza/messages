@@ -1,9 +1,22 @@
 html, body {
   margin: 0;
   padding: 0;
+
 }
+
+body{
+font-family: "apercu";
+text-align: "center";
+font-size: 32px;
+color: #88A4BF;
+background-color: #a0d6b4;
+
+}
+
+
+
 canvas {
-  display: block;
+  display: "block";
 }
 
 .hidden{
