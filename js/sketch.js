@@ -9,6 +9,7 @@ let folderName = "message"; // name of folder you create in db
 let messageInput;
 let sendMessageBtn;
 let receiveMessageBtn;
+let sendAgainBtn;
 let receivedMessage;
 let receiveDiv, sendDiv;
 
@@ -23,11 +24,14 @@ function setup() {
   receiveMessageBtn = document.querySelector("#receiveMessageBtn");
   receiveMessage = document.querySelector("#receiveMessage");
 
+  sendAgainBtn = document.querySelector("#sendAgainBtn")
+
   receiveDiv = document.querySelector("#receiveDiv");
   sendDiv = document.querySelector("#sendDiv");
 
   sendMessageBtn.addEventListener('click', sendMessage);
   receiveMessageBtn.addEventListener('click', receiveMessage);
+  sendAgainBtn.addEventListener('click', sendAgain);
 
 
   let config = {
@@ -74,31 +78,85 @@ function sendMessage() {
     console.log("sent message:");
     console.log(nodeData);
 
-    createP(`sent message: + ${nodeData.messageText}`);
+    //confirmation p
+    // createP(`sent message: + ${nodeData.messageText}`);
 
     //zero out the text area
     messageInput.value = ''
 
+    // sendDiv.style.display='none';
+    // receiveDiv.style.display='block';
+
+
+
   } else {
     //if they didnt type anything
-    alert("uh oh. type message first")
+    alert("uh oh. type message first!")
 
   }
 }
 
 function receiveMessage() {
 
-  for (let i = 0; i, fbDataArray.length; i++) {
-    if (fbDataArray[i].received == false) {
-      console.log("received message");
-      console.log(fbDataArray[0].messageText);
+  // shuffle array first
+  shuffleArray(fbDataArray);
 
-    }else{
-      console.log(" no more messages:( )");
-      
+  for (let i = 0; i < fbDataArray.length; i++) {
+
+    if (fbDataArray[i].received === false) {
+      // console.log("received message");
+      // console.log(fbDataArray[i].messageText);
+
+      receivedMessage.innerHTML = fbDataArray[i].messageText;
+
+      updateNode(folderName, fbDataArray[i].timestamp, {
+        recevied: true
+      });
+
+      receiveMessageBtn.style.display = 'none';
+      sendAgainBtn.style.display = 'block';
+
+
+      break;
+
+
+    } else {
+      receivedMessage.innerHTML = "no more messages:(";
+      // console.log(" no more messages:( )");
 
     }
 
   }
 
+}
+
+function sendAgain() {
+
+  // reset receive div
+  receivedMessage.innerHTML = "";
+  receiveMessageBtn.style.display = 'block';
+  sendAgainBtn.style.display = 'none';
+
+  // return to begining
+  sendDiv.style.display = 'none';
+  receiveDiv.style.display = 'block';
+
+}
+
+function shuffleArray(_array) {
+  // iterate backwards through an array
+  for (let i = _array.length - 1; i > 0; i--) {
+
+    // grab random index from 0 to i
+    let randomIndex = Math.floor(Math.random() * (i + 1));
+
+    // swap elements _array[i] and _array[j]
+    [_array[i], _array[randomIndex]] = [_array[randomIndex], _array[i]]; // using "destructuring assignment" syntax
+
+    // same can be written as:
+    // let arrayItem = _array[i]; // _array item in original position _array[i]
+    // _array[i] = _array[randomIndex]; // overwrite _array[i] with new item at random index
+    // _array[randomIndex] = _arrayItem; // now move _array item from original position into random position
+
+  }
 }

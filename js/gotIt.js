@@ -28,8 +28,8 @@ function errData(err) {
 // create a new node
 // the node folder name, id, and object are all passed in as parameters
 
-function createNode(_nodeFolder, _nodeId, _nodeObject) {
-  firebase.database().ref(_nodeFolder + '/' + _nodeId).set(_nodeObject);
+function createNode(_nodeFolder, _nodeID, _nodeObject) {
+  firebase.database().ref(_nodeFolder + '/' + _nodeID).set(_nodeObject);
 }
 
 createNode(folderName, "test", {
@@ -42,7 +42,10 @@ createNode(folderName, "test", {
 
 // the update method will update an existing node
 function updateNode(_nodeFolder, _nodeID, _updateObject) {
-  firebase.database().ref(_nodeFolder + '/' + _nodeId).update(_updateObject);
+  firebase.database().ref(_nodeFolder + '/' + _nodeID).update(_updateObject);
+
+
+
   // this will update existing key:value pair(s) OR add new ones to your object
   // so your object might look like:
   // { existingKey: updatedKeyValue,
