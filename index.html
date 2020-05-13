@@ -3,10 +3,12 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name "viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
-  <title> message in a bottle</title>
+  <meta name "viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title> message in a bottle </title>
   <meta name="description" content="">
   <meta name="keywords" content="">
+  <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-database.js"></script>
   <script src="libraries/p5.js"></script>
   <script src="libraries/p5.sound.min.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css">
@@ -15,7 +17,21 @@
 </head>
 
 <body>
+  <h3>send message</h3>
+
+  <div class="" id="sendDiv">
+    <textarea id="messageInput" name="name" rows="8" cols="80" placeholder="type message here"></textarea>
+    <button id:"sendMessageBtn"type="button" name="button">send message</button>
+  </div>
+
+  <div class="" id="recieveDiv">
+    <button id="receiveMessageBtn" type="button" name="button">receive message</button>
+    <p id="receivedMessage"></p>
+  </div>
+
+
   <script src="js/sketch.js"></script>
+  <script src="js/gotIt.js"></script>
 
 
 </body>
