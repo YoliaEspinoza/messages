@@ -5,7 +5,6 @@ function gotData(data) {
   // seed array(on intializing db)
   // seedDatabase(fortunes);
 
-
   // need to retrieve firebase data with val() method
   // this returns an object of all data
   fbData = data.val();
@@ -22,7 +21,6 @@ function gotData(data) {
     console.log('nothing in this folder yet');
   }
 }
-
 
 function errData(err) {
   console.log("error! did not receive data");
