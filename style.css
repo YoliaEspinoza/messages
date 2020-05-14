@@ -7,13 +7,17 @@ html, body {
 body{
 font-family: "apercu";
 text-align: "center";
-font-size: 32px;
+font-size: 35px;
 color: #88A4BF;
 background-color: #a0d6b4;
-
 }
 
-
+h4 {
+  font-family: "apercu";
+  text-align: "center";
+  font-size: 20px;
+  color: #88A4BF;
+}
 
 canvas {
   display: "block";
